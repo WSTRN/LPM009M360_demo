@@ -1,0 +1,23 @@
+&spi1 {
+	pinctrl-0 = <&spi1_sck_pb3 &spi1_miso_pa6 &spi1_mosi_pa7>;
+	pinctrl-names = "default";
+	cs-gpios = <&gpioa 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+	status = "okay";
+	lcd0: lcd@0 {
+		compatible = "jdi,lpm009m360a";
+		reg = <0>;
+		status = "okay";
+		spi-max-frequency = <4000000>;
+		disp_gpios = <&gpioa 8 GPIO_ACTIVE_HIGH>;
+		extcomin_gpios = <&gpiob 10 GPIO_ACTIVE_HIGH>;
+		width = <72>;
+		height = <144>;
+        color_mode = [04];
+	};
+};
+
+/{
+	chosen {
+		zephyr,display = &lcd0;
+	};
+};

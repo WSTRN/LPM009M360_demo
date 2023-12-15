@@ -1,0 +1,75 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "extensions": {
+        "recommendations": [
+            "esbenp.prettier-vscode",
+            "ms-python.python",
+            "ms-vscode.cpptools",
+            "plorefice.devicetree"
+        ]
+    },
+    "settings": {
+        // Hush CMake
+        "cmake.configureOnOpen": false,
+
+        // IntelliSense
+        "C_Cpp.default.compilerPath": "${userHome}/.local/zephyr-sdk-0.16.3/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc",
+        "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+        "C_Cpp.errorSquiggles": "disabled",
+        "files.associations": {
+            "Kconfig": "kconfig",
+            "*.overlay": "dts"
+        },
+        "kconfig.root": "/Users/wts/Code/zephyrproject/nucleo_g474re/Kconfig",
+        "prettier.tabWidth": 4,
+        "[c]": {
+            "editor.formatOnSave": true
+        },
+        "[javascript][javascriptreact][typescript][typescriptreact]": {
+            "editor.formatOnSave": true,
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[python]": {
+            "editor.formatOnSave": true,
+            "editor.defaultFormatter": "ms-python.python"
+        },
+        "[css][json][jsonc][html][markdown][yaml]": {
+            "editor.formatOnSave": true,
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "West Build",
+                "type": "shell",
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                },
+                "command": "${userHome}/Code/zephyrproject/.venv/bin/west",
+                "args": ["build", "-p", "auto"],
+                "problemMatcher": ["$gcc"]
+            },
+            {
+                "label": "West Flash",
+                "type": "shell",
+                "command": "${userHome}/Code/zephyrproject/.venv/bin/west",
+                "args": ["flash"],
+                "problemMatcher": ["$gcc"]
+            },
+            {
+                "label": "West Debug",
+                "type": "shell",
+                "command": "${userHome}/Code/zephyrproject/.venv/bin/west",
+                "args": ["debug"],
+                "problemMatcher": ["$gcc"]
+            }
+        ]
+    }
+}

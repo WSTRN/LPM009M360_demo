@@ -1,0 +1,2 @@
+
+add_subdirectory_ifdef(CONFIG_LPM009M360A lpm009m360a)
